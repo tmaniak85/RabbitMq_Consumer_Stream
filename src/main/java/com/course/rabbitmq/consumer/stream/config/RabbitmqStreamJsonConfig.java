@@ -27,7 +27,7 @@ public class RabbitmqStreamJsonConfig {
         return new Jackson2JsonMessageConverter(objectMapper);
     }
 
-    @Bean(name = "invoiceContainerFactoryOne")
+//    @Bean(name = "invoiceContainerFactoryOne")
     RabbitListenerContainerFactory<StreamListenerContainer> invoiceContainerFactoryOne(Environment env) {
         var factory = new StreamRabbitListenerContainerFactory(env);
         factory.setNativeListener(false);
@@ -39,7 +39,7 @@ public class RabbitmqStreamJsonConfig {
         return factory;
     }
 
-    @Bean(name = "invoiceContainerFactoryTwo")
+//    @Bean(name = "invoiceContainerFactoryTwo")
     RabbitListenerContainerFactory<StreamListenerContainer> invoiceContainerFactoryTwo(Environment env) {
         var factory = new StreamRabbitListenerContainerFactory(env);
         factory.setNativeListener(true);
