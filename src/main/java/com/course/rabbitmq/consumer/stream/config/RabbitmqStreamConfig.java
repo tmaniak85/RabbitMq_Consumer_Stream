@@ -11,7 +11,7 @@ import org.springframework.rabbit.stream.listener.StreamListenerContainer;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
-@Configuration
+//@Configuration
 public class RabbitmqStreamConfig {
 
     public static final String STREAM_NUMBER = "s.number";

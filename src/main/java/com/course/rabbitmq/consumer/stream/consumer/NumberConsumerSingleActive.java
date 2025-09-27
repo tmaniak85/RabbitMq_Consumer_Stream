@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class NumberConsumerSingleActive {
 
-    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "singleActiveContainerFactoryOne")
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "singleActiveContainerFactoryOne")
     public void singleActiveOne(Message message, Context context) throws InterruptedException {
         var data = (Data) message.getBody();
         var logStr = String.format("single active 1 : %s, offset : %d", data.getValue(), context.offset());
