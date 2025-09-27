@@ -18,7 +18,7 @@ public class NumberConsumerLast {
         LOG.info("last 1 : {}, on offset {}", message.getBody(), context.offset());
     }
 
-        @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "lastContainerFactoryTwo")
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "lastContainerFactoryTwo")
     public void lastTwo(Message message, MessageHandler.Context context) {
         LOG.info("last 2 : {}, on offset {}", message.getBody(), context.offset());
     }

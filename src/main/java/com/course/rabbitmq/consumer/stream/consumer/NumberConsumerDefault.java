@@ -12,12 +12,12 @@ public class NumberConsumerDefault {
 
     private static final Logger LOG = LoggerFactory.getLogger(NumberConsumerDefault.class);
 
-    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER)
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER)
     public void listenNumberOne(String message) {
         LOG.info("default listen string : {}", message);
     }
 
-    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER)
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER)
     public void listenNumberTwo(Message message) {
         LOG.info("default listen message : {}", message);
     }

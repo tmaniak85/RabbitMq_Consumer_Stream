@@ -18,7 +18,7 @@ public class NumberConsumerAbsolute {
         LOG.info("absolute 1 : {}, on offset {}", message.getBody(), context.offset());
     }
 
-        @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "absoluteContainerFactoryTwo")
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "absoluteContainerFactoryTwo")
     public void absoluteTwo(Message message, MessageHandler.Context context) {
         LOG.info("absolute 2 : {}, on offset {}", message.getBody(), context.offset());
     }
