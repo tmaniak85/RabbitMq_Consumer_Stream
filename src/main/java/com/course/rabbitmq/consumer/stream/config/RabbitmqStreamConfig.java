@@ -22,6 +22,12 @@ public class RabbitmqStreamConfig {
     private static final String CONSUMER_OFFSET_NEXT_01 = "consumer-offset-next-01";
     private static final String CONSUMER_OFFSET_TIMESTAMP_01 = "consumer-offset-timestamp-01";
 
+    private static final String CONSUMER_OFFSET_ABSOLUTE_02 = "consumer-offset-absolute-02";
+    private static final String CONSUMER_OFFSET_FIRST_02 = "consumer-offset-first-02";
+    private static final String CONSUMER_OFFSET_LAST_02 = "consumer-offset-last-02";
+    private static final String CONSUMER_OFFSET_NEXT_02 = "consumer-offset-next-02";
+    private static final String CONSUMER_OFFSET_TIMESTAMP_02 = "consumer-offset-timestamp-02";
+
     @Bean
     RabbitListenerContainerFactory<StreamListenerContainer> absoluteContainerFactoryOne(Environment env) {
         var factory = new StreamRabbitListenerContainerFactory(env);
@@ -69,6 +75,58 @@ public class RabbitmqStreamConfig {
 
         factory.setNativeListener(true);
         factory.setConsumerCustomizer((id, builder) -> builder.name(CONSUMER_OFFSET_TIMESTAMP_01).offset(OffsetSpecification.timestamp(timestampForOffset))
+                .autoTrackingStrategy());
+
+        return factory;
+    }
+
+    @Bean
+    RabbitListenerContainerFactory<StreamListenerContainer> absoluteContainerFactoryTwo(Environment env) {
+        var factory = new StreamRabbitListenerContainerFactory(env);
+
+        factory.setNativeListener(true);
+        factory.setConsumerCustomizer((id, builder) -> builder.name(CONSUMER_OFFSET_ABSOLUTE_02).offset(OffsetSpecification.offset(3)).autoTrackingStrategy());
+
+        return factory;
+    }
+
+    @Bean
+    RabbitListenerContainerFactory<StreamListenerContainer> firstContainerFactoryTwo(Environment env) {
+        var factory = new StreamRabbitListenerContainerFactory(env);
+
+        factory.setNativeListener(true);
+        factory.setConsumerCustomizer((id, builder) -> builder.name(CONSUMER_OFFSET_FIRST_02).offset(OffsetSpecification.first()).autoTrackingStrategy());
+
+        return factory;
+    }
+
+    @Bean
+    RabbitListenerContainerFactory<StreamListenerContainer> lastContainerFactoryTwo(Environment env) {
+        var factory = new StreamRabbitListenerContainerFactory(env);
+
+        factory.setNativeListener(true);
+        factory.setConsumerCustomizer((id, builder) -> builder.name(CONSUMER_OFFSET_LAST_02).offset(OffsetSpecification.last()).autoTrackingStrategy());
+
+        return factory;
+    }
+
+    @Bean
+    RabbitListenerContainerFactory<StreamListenerContainer> nextContainerFactoryTwo(Environment env) {
+        var factory = new StreamRabbitListenerContainerFactory(env);
+
+        factory.setNativeListener(true);
+        factory.setConsumerCustomizer((id, builder) -> builder.name(CONSUMER_OFFSET_NEXT_02).offset(OffsetSpecification.next()).autoTrackingStrategy());
+
+        return factory;
+    }
+
+    @Bean
+    RabbitListenerContainerFactory<StreamListenerContainer> timestampContainerFactoryTwo(Environment env) {
+        var timestampForOffset = ZonedDateTime.now(ZoneOffset.UTC).minusMinutes(5).toEpochSecond() * 1000;
+        var factory = new StreamRabbitListenerContainerFactory(env);
+
+        factory.setNativeListener(true);
+        factory.setConsumerCustomizer((id, builder) -> builder.name(CONSUMER_OFFSET_TIMESTAMP_02).offset(OffsetSpecification.timestamp(timestampForOffset))
                 .autoTrackingStrategy());
 
         return factory;

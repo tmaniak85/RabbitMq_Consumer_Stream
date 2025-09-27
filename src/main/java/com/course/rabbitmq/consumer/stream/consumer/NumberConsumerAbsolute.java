@@ -13,9 +13,14 @@ public class NumberConsumerAbsolute {
 
     private static final Logger LOG = LoggerFactory.getLogger(NumberConsumerAbsolute.class);
 
-    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "absoluteContainerFactoryOne")
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "absoluteContainerFactoryOne")
     public void absoluteOne(Message message, MessageHandler.Context context) {
         LOG.info("absolute 1 : {}, on offset {}", message.getBody(), context.offset());
+    }
+
+        @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "absoluteContainerFactoryTwo")
+    public void absoluteTwo(Message message, MessageHandler.Context context) {
+        LOG.info("absolute 2 : {}, on offset {}", message.getBody(), context.offset());
     }
 
 }
