@@ -10,12 +10,12 @@ import org.springframework.rabbit.stream.listener.StreamListenerContainer;
 
 import java.util.concurrent.TimeUnit;
 
-@Configuration
+//@Configuration
 public class RabbitmqSuperStreamConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(RabbitmqSuperStreamConfig.class);
 
-    @Bean
+//    @Bean
     StreamListenerContainer superStreamNumberContainer() {
         var env = Environment.builder().maxConsumersByConnection(1).build();
         var container = new StreamListenerContainer(env);
