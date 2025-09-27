@@ -18,12 +18,12 @@ public class NumberConsumerFirst {
         LOG.info("first 1 : {}, on offset {}", message.getBody(), context.offset());
     }
 
-    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "firstContainerFactoryTwo")
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "firstContainerFactoryTwo")
     public void firstTwo(Message message, MessageHandler.Context context) {
         LOG.info("first 2 : {}, on offset {}", message.getBody(), context.offset());
     }
 
-    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "firstContainerFactoryThree")
+//    @RabbitListener(queues = RabbitmqStreamConfig.STREAM_NUMBER, containerFactory = "firstContainerFactoryThree")
     public void firstThree(Message message, MessageHandler.Context context) {
         LOG.info("first 3 : {}, on offset {}", message.getBody(), context.offset());
 
